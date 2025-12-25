@@ -1,5 +1,6 @@
 console.log("Begin web server");
 const express = require("express");
+const res = require("express/lib/response");
 const app = express();
 const http = require('http');
 const fs = require("fs");
@@ -22,21 +23,22 @@ app.use(express.urlencoded({extended: true}));
 
 //3 Views' codes
 app.set("views", "views");
-app.set("view engine", "ejs")
+app.set("view engine", "ejs");
 
 //4 Routing codes
 app.post("/create-item", (req, res) => {
-    console.log(req.body);
-    res.json({test: "success"});
-})
-
-app.get("/", function(req, res){
-    //res.render("purchase"); //TODO: code with db here
+    //TODO: code with db here
 });
 
-app.get('/author', (req, res) => {
-    res.render("author", {user: user});
-})
+app.get("/author", (req, res) => {
+    res.render("author", { user: user });
+});
+
+app.get("/", function(req, res){
+   res.render("purchase"); 
+});
+
+
 
 const server = http.createServer(app);
 let PORT = 3000;

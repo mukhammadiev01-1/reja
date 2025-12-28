@@ -1,4 +1,3 @@
-// Masalani izohi
 // A-TASK:
 // Berilgan harf berilgan so'z ichida necha marta qatnashganini topish
 
@@ -15,8 +14,6 @@ function countLetter(letter, word) {
 
 console.log(countLetter("q", "identification"))
 console.log(countLetter("i", "identification"))
-
-
 
 
 

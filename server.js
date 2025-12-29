@@ -1,9 +1,9 @@
 const http = require("http");
 const mongodb = require("mongodb");
-require("dotenv").config();
 
 let db;
-const connectionString = process.env.MONGO_URI;
+const connectionString =
+  "mongodb+srv://mukhammadiev1:a7Mw1ucoMl3epqkW@cluster0.cb1bnov.mongodb.net/REJA?retryWrites=true&w=majority";
 
 console.log("Trying to connect to MongoDB...");
 mongodb.connect(

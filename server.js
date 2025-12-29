@@ -1,48 +1,31 @@
-console.log("Begin web server");
-const express = require("express");
-const res = require("express/lib/response");
-const app = express();
-const http = require('http');
-const fs = require("fs");
+const http = require("http");
+const mongodb = require("mongodb");
 
-let user;
-fs.readFile("database/user.json", "utf8", (err, data) => {
-    if(err){
-        console.log("ERROR", err);
-    } else {
-        user = JSON.parse(data)
+let db;
+const connectionString =
+  "mongodb+srv://mukhammadiev1:bn2xxeyiQ16lEqVu@cluster0.cb1bnov.mongodb.net/reja?retryWrites=true&w=majority";
+
+console.log("Trying to connect to MongoDB...");
+mongodb.connect(
+  connectionString,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err, client) => {
+    if (err) console.log("ERROR on connection MongoDB");
+    else {
+      console.log("MongoDB connection succeed");
+      module.exports = client;
+
+      const app = require("./app");
+      const server = http.createServer(app);
+      let PORT = 3000;
+      server.listen(PORT, function () {
+        console.log(
+          `The server is running successfully on port: ${PORT}, http://localhost:${PORT}`
+        );
+      });
     }
-});
-
-//1 Entering codes
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-
-//2:Session codes
-
-//3 Views' codes
-app.set("views", "views");
-app.set("view engine", "ejs");
-
-//4 Routing codes
-app.post("/create-item", (req, res) => {
-    //TODO: code with db here
-});
-
-app.get("/author", (req, res) => {
-    res.render("author", { user: user });
-});
-
-app.get("/", function(req, res){
-   res.render("reja"); 
-});
-
-
-
-const server = http.createServer(app);
-let PORT = 3000;
-server.listen(PORT, function () {
-    console.log(`The server is running successfully on port: ${PORT}, http://localhost:${PORT}`
-    );
-});
+  }
+);

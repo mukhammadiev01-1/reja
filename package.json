@@ -12,11 +12,11 @@
   "author": "UMAR",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^5.2.1",
-    "ejs": "^3.1.10"
+    "mongodb": "^3.2.6"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
   }
 }
-

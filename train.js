@@ -1,3 +1,18 @@
+// B-TASK
+//// Berilgan so'z ichida necha marta son qatnashganini topish
+function countDigits(word){
+  let count = 0;
+
+  for (let number of word) {
+    if (number >= '0' && number <= '9') {
+      count++;
+    }
+  }
+
+  return count;
+}
+console.log(countDigits("icd67jfo90lkm3gb8"))
+
 // A-TASK:
 // Berilgan harf berilgan so'z ichida necha marta qatnashganini topish
 

@@ -1,38 +1,34 @@
 // B-TASK
 //// Berilgan so'z ichida necha marta son qatnashganini topish
-function countDigits(word){
+function countDigits(word) {
   let count = 0;
 
   for (let number of word) {
-    if (number >= '0' && number <= '9') {
+    if (number >= "0" && number <= "9") {
       count++;
     }
   }
 
   return count;
 }
-console.log(countDigits("icd67jfo90lkm3gb8"))
+console.log(countDigits("icd67jfo90lkm3gb8"));
 
 // A-TASK:
 // Berilgan harf berilgan so'z ichida necha marta qatnashganini topish
 
-function countLetter(letter, word) {
-  let count = 0;
+//function countLetter(letter, word) {
+//  let count = 0;
 
-  for (let char of word) {
-    if (char === letter) {
-      count++;
-    }
-  }
-  return count;
-}
+//  for (let char of word) {
+//    if (char === letter) {
+//      count++;
+//    }
+//  }
+//  return count;
+//}
 
-console.log(countLetter("q", "identification"))
-console.log(countLetter("i", "identification"))
-
-
-
-
+//console.log(countLetter("q", "identification"))
+//console.log(countLetter("i", "identification"))
 
 //console.log("Jack Ma maslahatlari"); // Konsolga sarlavha chiqaradi
 
@@ -52,17 +48,17 @@ console.log(countLetter("i", "identification"))
    natija callback orqali qaytadi
 ========================= */
 //function maslahatBeringCb(a, callback) {
-  // Agar kiritilgan qiymat number bo‘lmasa — xato
+// Agar kiritilgan qiymat number bo‘lmasa — xato
 //  if (typeof a !== "number") return callback("insert a number", null);
 
-  // Yosh oralig‘iga qarab maslahat qaytaradi
+// Yosh oralig‘iga qarab maslahat qaytaradi
 //  if (a <= 20) return callback(null, list[0]);
 //  if (a > 20 && a <= 30) return callback(null, list[1]);
 //  if (a > 30 && a <= 40) return callback(null, list[2]);
 //  if (a > 40 && a <= 50) return callback(null, list[3]);
 //  if (a > 50 && a <= 60) return callback(null, list[4]);
 
-  // 60 dan katta bo‘lsa — 5 soniyadan keyin javob beradi
+// 60 dan katta bo‘lsa — 5 soniyadan keyin javob beradi
 //  setTimeout(() => callback(null, list[5]), 5000);
 //}
 
@@ -76,16 +72,15 @@ console.log(countLetter("i", "identification"))
 
 //console.log("passed here 1 (callback)"); // Javobdan oldin chiqadi
 
-
 /* =========================
    2) PROMISE VERSION
    Callback → Promise ko‘rinishi
    then / catch ishlatiladi
 ========================= */
 //function maslahatBeringPromise(a) {
-  // Promise obyektini qaytaradi
+// Promise obyektini qaytaradi
 //  return new Promise((resolve, reject) => {
-    // Ichida callback funksiyani ishlatyapmiz
+// Ichida callback funksiyani ishlatyapmiz
 //    maslahatBeringCb(a, (err, data) => {
 //      if (err) reject(err);   // Xato bo‘lsa reject
 //     else resolve(data);     // Natija bo‘lsa resolve
@@ -102,7 +97,6 @@ console.log(countLetter("i", "identification"))
 
 //console.log("passed here 1 (promise)"); // Natijadan oldin chiqadi
 
-
 /* =========================
    3) ASYNC / AWAIT VERSION
    Eng qulay va zamonaviy usul
@@ -112,17 +106,17 @@ console.log(countLetter("i", "identification"))
 //const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 //async function maslahatBeringAsync(a) {
-  // Agar number bo‘lmasa — xato tashlaydi
+// Agar number bo‘lmasa — xato tashlaydi
 //  if (typeof a !== "number") throw new Error("insert a number");
 
-  // Yoshga qarab maslahat qaytaradi
+// Yoshga qarab maslahat qaytaradi
 //  if (a <= 20) return list[0];
 //  if (a > 20 && a <= 30) return list[1];
 //  if (a > 30 && a <= 40) return list[2];
 //  if (a > 40 && a <= 50) return list[3];
 //  if (a > 50 && a <= 60) return list[4];
 
-  // 5 soniya kutadi (real async)
+// 5 soniya kutadi (real async)
 //  await sleep(5000);
 //  return list[5];
 //}
@@ -132,14 +126,14 @@ console.log(countLetter("i", "identification"))
 //  try {
 //    console.log("passed here 0 (async/await)"); // Boshlandi
 
-    // await — Promise tugashini kutadi
+// await — Promise tugashini kutadi
 //    console.log(await maslahatBeringAsync(20));
 //    console.log(await maslahatBeringAsync(31));
 //    console.log(await maslahatBeringAsync(41));
 
 //    console.log("passed here 1 (async/await)"); // Tugadi
 //  } catch (err) {
-    // Xatolar shu yerda ushlanadi
+// Xatolar shu yerda ushlanadi
 //    console.log("ERROR:", err.message);
 //  }
 //}

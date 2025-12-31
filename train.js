@@ -1,17 +1,72 @@
-// B-TASK
-//// Berilgan so'z ichida necha marta son qatnashganini topish
-function countDigits(word) {
-  let count = 0;
-
-  for (let number of word) {
-    if (number >= "0" && number <= "9") {
-      count++;
-    }
+//C-TASK
+////Class
+class Shop {
+  constructor(non, lagmon, kola) {
+    this.non = non;
+    this.lagmon = lagmon;
+    this.kola = kola;
   }
 
-  return count;
+  // qoldiq
+  qoldiq() {
+    const time = new Date().toLocaleTimeString().slice(0, 5);
+    console.log(
+      `Hozir ${time} da ${this.non} ta non, ${this.lagmon} ta lag'mon va ${this.kola} ta cola mavjud`
+    );
+  }
+
+  // sotish
+  sotish(mahsulot, soni) {
+    if (mahsulot === "non") {
+      this.non -= soni;
+    } else if (mahsulot === "lagmon") {
+      this.lagmon -= soni;
+    } else if (mahsulot === "cola") {
+      this.kola -= soni;
+    }
+
+    console.log(`${soni} ta ${mahsulot} sotildi`);
+  }
+
+  // qabul
+  qabul(mahsulot, soni) {
+    if (mahsulot === "non") {
+      this.non += soni;
+    } else if (mahsulot === "lagmon") {
+      this.lagmon += soni;
+    } else if (mahsulot === "cola") {
+      this.kola += soni;
+    }
+
+    console.log(`${soni} ta ${mahsulot} qabul qilindi`);
+  }
 }
-console.log(countDigits("icd67jfo90lkm3gb8"));
+
+// =======================
+// Ishlatilishi (example)
+// =======================
+
+const shop = new Shop(4, 5, 2);
+
+shop.qoldiq(); // Hozir vaqt da 4 ta non, 5 ta lag'mon va 2 ta cola mavjud
+shop.sotish("non", 3);
+shop.qabul("cola", 4);
+shop.qoldiq(); // Hozir vaqt da 1 ta non, 5 ta lag'mon va 6 ta cola mavjud
+
+// B-TASK
+//// Berilgan so'z ichida necha marta son qatnashganini topish
+//function countDigits(word) {
+//  let count = 0;
+
+//  for (let number of word) {
+//    if (number >= "0" && number <= "9") {
+//      count++;
+//    }
+//  }
+
+//  return count;
+//}
+//console.log(countDigits("icd67jfo90lkm3gb8"));
 
 // A-TASK:
 // Berilgan harf berilgan so'z ichida necha marta qatnashganini topish

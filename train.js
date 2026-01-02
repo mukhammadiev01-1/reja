@@ -1,57 +1,109 @@
+// D-TASK
+function checkContent(word1, word2) {
+  // 1) Avval uzunligini tekshiramiz
+  // Agar uzunliklar teng bo'lmasa, tarkibi bir xil bo‘lishi mumkin emas
+  if (word1.length !== word2.length) {
+    return false;
+  }
+
+  // 2) Har bir harf nechta ekanini saqlash uchun object (jadval)
+  // Masalan: { a: 2, b: 1 }
+  const map = {};
+
+  // 3) 1-chi so'zdagi harflarni sanab chiqamiz
+  // Agar harf hali uchramagan bo‘lsa → 1 qilib yozamiz
+  // Agar oldin uchragan bo‘lsa → +1 qilamiz
+  // Natijada har bir harf nechta ekanini bilib olamiz
+  for (let ch of word1) {
+    if (map[ch]) {
+      map[ch]++;
+    } else {
+      map[ch] = 1;
+    }
+  }
+
+  // 4) 2-chi so'z bo‘yicha sanog‘ini kamaytiramiz
+  // Agar 2-chi so‘zda 1-chi so‘zda yo‘q harf bo‘lsa → false
+  // Agar harf bo‘lsa → sanog‘ini -1 qilamiz
+  // Agar sanog‘i 0 bo‘lib qolgan harf yana uchrasa → false
+  for (let ch of word2) {
+    if (!map[ch]) {
+      return false;
+    }
+    map[ch]--;
+  }
+
+  // 5) Oxirida barcha harflar sanog‘i 0 bo‘lishi kerak
+  // Agar kamida bitta harf 0 dan farq qilsa → false
+  for (let key in map) {
+    if (map[key] !== 0) {
+      return false;
+    }
+  }
+
+  // Hammasi mos keldi
+  return true;
+}
+
+// Misollar
+console.log(checkContent("mitgroup", "gmtiprou")); // true
+console.log(checkContent("alisher", "sherali")); // true
+console.log(checkContent("UMAR", "Shohjahon")); // false
+
 //C-TASK
 ////Class
-class Shop {
-  constructor(non, lagmon, kola) {
-    this.non = non;
-    this.lagmon = lagmon;
-    this.kola = kola;
-  }
+//class Shop {
+//  constructor(non, lagmon, kola) {
+//    this.non = non;
+//    this.lagmon = lagmon;
+//    this.kola = kola;
+//  }
 
-  // qoldiq
-  qoldiq() {
-    const time = new Date().toLocaleTimeString().slice(0, 5);
-    console.log(
-      `Hozir ${time} da ${this.non} ta non, ${this.lagmon} ta lag'mon va ${this.kola} ta cola mavjud`
-    );
-  }
+// qoldiq
+//  qoldiq() {
+//    const time = new Date().toLocaleTimeString().slice(0, 5);
+//    console.log(
+//      `Hozir ${time} da ${this.non} ta non, ${this.lagmon} ta lag'mon va ${this.kola} ta cola mavjud`
+//    );
+//  }
 
-  // sotish
-  sotish(mahsulot, soni) {
-    if (mahsulot === "non") {
-      this.non -= soni;
-    } else if (mahsulot === "lagmon") {
-      this.lagmon -= soni;
-    } else if (mahsulot === "cola") {
-      this.kola -= soni;
-    }
+// sotish
+//  sotish(mahsulot, soni) {
+//    if (mahsulot === "non") {
+//      this.non -= soni;
+//    } else if (mahsulot === "lagmon") {
+//      this.lagmon -= soni;
+//    } else if (mahsulot === "cola") {
+//      this.kola -= soni;
+//    }
 
-    console.log(`${soni} ta ${mahsulot} sotildi`);
-  }
+//    console.log(`${soni} ta ${mahsulot} sotildi`);
+//  }
 
-  // qabul
-  qabul(mahsulot, soni) {
-    if (mahsulot === "non") {
-      this.non += soni;
-    } else if (mahsulot === "lagmon") {
-      this.lagmon += soni;
-    } else if (mahsulot === "cola") {
-      this.kola += soni;
-    }
+// qabul
+//  qabul(mahsulot, soni) {
+//    if (mahsulot === "non") {
+//      this.non += soni;
+//    } else if (mahsulot === "lagmon") {
+//      this.lagmon += soni;
+//    } else if (mahsulot === "cola") {
+//      this.kola += soni;
+//    }
 
-    console.log(`${soni} ta ${mahsulot} qabul qilindi`);
-  }
-}
+//    console.log(`${soni} ta ${mahsulot} qabul qilindi`);
+//  }
+//}
 
 // =======================
 // Ishlatilishi (example)
 // =======================
 
-const shop = new Shop(4, 5, 2);
+//const shop = new Shop(4, 5, 2);
 
-shop.qoldiq(); // Hozir vaqt da 4 ta non, 5 ta lag'mon va 2 ta cola mavjud
-shop.sotish("non", 3);
-shop.qabul("cola", 4);
-shop.qoldiq(); // Hozir vaqt da 1 ta non, 5 ta lag'mon va 6 ta cola mavjud
+//shop.qoldiq(); // Hozir vaqt da 4 ta non, 5 ta lag'mon va 2 ta cola mavjud
+//shop.sotish("non", 3);
+//shop.qabul("cola", 4);
+//shop.qoldiq(); // Hozir vaqt da 1 ta non, 5 ta lag'mon va 6 ta cola mavjud
 
 // B-TASK
 //// Berilgan so'z ichida necha marta son qatnashganini topish

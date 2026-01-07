@@ -1,54 +1,73 @@
-// D-TASK
-function checkContent(word1, word2) {
-  // 1) Avval uzunligini tekshiramiz
-  // Agar uzunliklar teng bo'lmasa, tarkibi bir xil bo‘lishi mumkin emas
-  if (word1.length !== word2.length) {
-    return false;
+//E-TASK
+
+function getReverse(word) {
+  // Natijani yig‘ish uchun bo‘sh string ochamiz
+  let result = "";
+
+  // Oxirgi indeksdan (length - 1) boshlab 0 gacha yuramiz
+  for (let i = word.length - 1; i >= 0; i--) {
+    // Hozirgi indeksdagi harfni result ga qo‘shamiz
+    result += word[i];
   }
 
-  // 2) Har bir harf nechta ekanini saqlash uchun object (jadval)
-  // Masalan: { a: 2, b: 1 }
-  const map = {};
-
-  // 3) 1-chi so'zdagi harflarni sanab chiqamiz
-  // Agar harf hali uchramagan bo‘lsa → 1 qilib yozamiz
-  // Agar oldin uchragan bo‘lsa → +1 qilamiz
-  // Natijada har bir harf nechta ekanini bilib olamiz
-  for (let ch of word1) {
-    if (map[ch]) {
-      map[ch]++;
-    } else {
-      map[ch] = 1;
-    }
-  }
-
-  // 4) 2-chi so'z bo‘yicha sanog‘ini kamaytiramiz
-  // Agar 2-chi so‘zda 1-chi so‘zda yo‘q harf bo‘lsa → false
-  // Agar harf bo‘lsa → sanog‘ini -1 qilamiz
-  // Agar sanog‘i 0 bo‘lib qolgan harf yana uchrasa → false
-  for (let ch of word2) {
-    if (!map[ch]) {
-      return false;
-    }
-    map[ch]--;
-  }
-
-  // 5) Oxirida barcha harflar sanog‘i 0 bo‘lishi kerak
-  // Agar kamida bitta harf 0 dan farq qilsa → false
-  for (let key in map) {
-    if (map[key] !== 0) {
-      return false;
-    }
-  }
-
-  // Hammasi mos keldi
-  return true;
+  // Teskari qilingan stringni qaytaramiz
+  return result;
 }
 
+// Misol uchun tekshirish
+console.log(getReverse("hello")); // "olleh"
+
+// D-TASK
+//function checkContent(word1, word2) {
+// 1) Avval uzunligini tekshiramiz
+// Agar uzunliklar teng bo'lmasa, tarkibi bir xil bo‘lishi mumkin emas
+//  if (word1.length !== word2.length) {
+//    return false;
+//  }
+
+// 2) Har bir harf nechta ekanini saqlash uchun object (jadval)
+// Masalan: { a: 2, b: 1 }
+//  const map = {};
+
+// 3) 1-chi so'zdagi harflarni sanab chiqamiz
+// Agar harf hali uchramagan bo‘lsa → 1 qilib yozamiz
+// Agar oldin uchragan bo‘lsa → +1 qilamiz
+// Natijada har bir harf nechta ekanini bilib olamiz
+//  for (let ch of word1) {
+//    if (map[ch]) {
+//      map[ch]++;
+//    } else {
+//      map[ch] = 1;
+//    }
+//  }
+
+// 4) 2-chi so'z bo‘yicha sanog‘ini kamaytiramiz
+// Agar 2-chi so‘zda 1-chi so‘zda yo‘q harf bo‘lsa → false
+// Agar harf bo‘lsa → sanog‘ini -1 qilamiz
+// Agar sanog‘i 0 bo‘lib qolgan harf yana uchrasa → false
+//  for (let ch of word2) {
+//    if (!map[ch]) {
+//      return false;
+//    }
+//    map[ch]--;
+//  }
+
+// 5) Oxirida barcha harflar sanog‘i 0 bo‘lishi kerak
+// Agar kamida bitta harf 0 dan farq qilsa → false
+//  for (let key in map) {
+//    if (map[key] !== 0) {
+//      return false;
+//    }
+//  }
+
+// Hammasi mos keldi
+//  return true;
+//}
+
 // Misollar
-console.log(checkContent("mitgroup", "gmtiprou")); // true
-console.log(checkContent("alisher", "sherali")); // true
-console.log(checkContent("UMAR", "Shohjahon")); // false
+//console.log(checkContent("mitgroup", "gmtiprou")); // true
+//console.log(checkContent("alisher", "sherali")); // true
+//console.log(checkContent("UMAR", "Shohjahon")); // false
 
 //C-TASK
 ////Class

@@ -1,3 +1,29 @@
+//F-TASK
+
+function findDoublers(word) {
+  // Oldin uchragan harflarni saqlash uchun object
+  let seen = {};
+
+  // So‘zdagi har bir harfni ketma-ket tekshiramiz
+  for (let ch of word) {
+    // Agar harf oldin ham uchragan bo‘lsa
+    if (seen[ch]) {
+      return true; // demak, takror bor
+    }
+
+    // Aks holda, bu harfni ko‘rildi deb belgilaymiz
+    seen[ch] = true;
+  }
+
+  // Agar hech qaysi harf takrorlanmagan bo‘lsa
+  return false;
+}
+
+// Misollar
+console.log(findDoublers("hello")); // true  ('l' ikki marta bor)
+console.log(findDoublers("abc")); // false
+console.log(findDoublers("aba")); // true
+
 //E-TASK
 
 function getReverse(word) {

@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Kodlash UTF-8 -->
     <meta charset="UTF-8" />
+
+    <!-- Mobil qurilmalar uchun moslashuv -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Sahifa nomi -->
     <title>REJA</title>
 
+    <!-- Bootstrap 4 CSS ulanishi -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -13,24 +19,39 @@
     />
   </head>
 
+  <!-- Sahifa fon rangi -->
   <body style="background-color: #b8bbd1">
     <div class="container">
+      <!-- Sahifa sarlavhasi -->
       <h1 class="display-4 text-center py-3">PLAN AND GOALS</h1>
 
+      <!-- Yangi reja qo‘shish bloki -->
       <div class="jumbotron p-3 shadow-sm">
+        <!-- Reja yaratish formasi -->
         <form id="create-form" action="/create-item" method="POST">
           <div class="d-flex align-items-center">
+            <!-- Reja kiritiladigan input -->
             <input
               id="create-field"
               name="reja"
-              autofocus
-              autocomplete="off"
-              class="form-control mr-3"
-              type="text"
-              placeholder="Enter a new goal"
-              style="flex: 1"
+              <!--
+              Backend
+              aynan
+              shu
+              nom
+              orqali
+              qiymat
+              oladi
+              --
             />
+            autofocus
+            <!-- Sahifa ochilganda avtomatik fokus -->
+            autocomplete="off"
+            <!-- Brauzer tarixidan taklif chiqmasin -->
+            class="form-control mr-3" type="text" placeholder="Enter a new goal"
+            style="flex: 1" />
 
+            <!-- Yangi reja qo‘shish tugmasi -->
             <button
               type="submit"
               class="btn btn-primary"
@@ -42,37 +63,58 @@
         </form>
       </div>
 
+      <!-- Rejalar ro‘yxati -->
       <ul id="item-list" class="list-group pb-5">
+        <!-- EJS orqali backenddan kelgan items massivini aylantiramiz -->
         <% items.map(function(item){ %>
         <li
           class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
         >
+          <!-- Rejaning matni -->
           <span class="item-text"><%=item.reja%></span>
 
           <div>
+            <!-- Tahrirlash tugmasi -->
             <button
               data-id="<%=item._id%>"
-              class="edit-me btn btn-secondary btn-sm mr-1"
+              <!--
+              MongoDB
+              ID
+              frontendga
+              uzatiladi
+              --
             >
-              O'zgartirish
+              class="edit-me btn btn-secondary btn-sm mr-1" > O'zgartirish
             </button>
 
+            <!-- O‘chirish tugmasi -->
             <button
               data-id="<%=item._id%>"
-              class="delete-me btn btn-danger btn-sm"
+              <!--
+              Qaysi
+              reja
+              o‘chishini
+              bilish
+              uchun
+              --
             >
-              O'chirish
+              class="delete-me btn btn-danger btn-sm" > O'chirish
             </button>
           </div>
         </li>
         <% }) %>
       </ul>
 
+      <!-- Barcha rejalarni tozalash tugmasi -->
       <button id="clean-all" class="btn btn-danger" style="border-radius: 20px">
         Hamma rejalarni o'chirish
       </button>
     </div>
+
+    <!-- Axios — backendga AJAX so‘rovlar yuborish uchun -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Frontend logikasi (edit, delete, delete-all) -->
     <script src="/browser.js"></script>
   </body>
 </html>
